@@ -1,0 +1,171 @@
+╔════════════════════════════════════════════════════════════════════╗
+║           🔬 SmartLens AI - API Testing Quick Reference           ║
+╚════════════════════════════════════════════════════════════════════╝
+
+┌─────────────────────────────────────────────────────────────────────┐
+│ 🚀 QUICK START                                                      │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                     │
+│  1. Run the test:                                                   │
+│     $ node test_apis.js                                             │
+│                                                                     │
+│  2. Enter your API keys when prompted (or skip with Enter)          │
+│                                                                     │
+│  3. View the results and troubleshooting tips                       │
+│                                                                     │
+└─────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────┐
+│ 🔑 API KEY FORMATS                                                  │
+├───────────────┬─────────────────────────────────────────────────────┤
+│ Platform      │ Key Format Example                                  │
+├───────────────┼─────────────────────────────────────────────────────┤
+│ OpenAI        │ sk-proj-abc123...                                   │
+│ Claude        │ sk-ant-api03-abc123...                              │
+│ Gemini        │ AIzaSyAbc123...                                     │
+│ OpenRouter    │ sk-or-v1-abc123...                                  │
+└───────────────┴─────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────┐
+│ 📊 TEST RESULTS GUIDE                                               │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                     │
+│  ✅ Green = Success - API is working!                               │
+│  ❌ Red = Error - Check troubleshooting below                       │
+│  ⚠️  Yellow = Warning or skipped                                    │
+│  ℹ️  Blue = Information about request                              │
+│                                                                     │
+└─────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────┐
+│ 🔧 TROUBLESHOOTING BY ERROR                                         │
+├──────────────────────────────┬──────────────────────────────────────┤
+│ Error Message                │ Solution                             │
+├──────────────────────────────┼──────────────────────────────────────┤
+│ "Invalid key format"         │ Copy the entire key, no spaces       │
+│ "Incorrect API key"          │ Generate new key from platform site  │
+│ "Insufficient credits"       │ Add billing/credits to account       │
+│ "Rate limit exceeded"        │ Wait 60 seconds, try again           │
+│ "Connection timeout"         │ Check internet/firewall settings     │
+│ "Authentication failed"      │ Verify key hasn't been revoked       │
+└──────────────────────────────┴──────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────┐
+│ 🌐 GET/VERIFY API KEYS                                              │
+├───────────────┬─────────────────────────────────────────────────────┤
+│ OpenAI        │ https://platform.openai.com/api-keys                │
+│ Claude        │ https://console.anthropic.com/settings/keys         │
+│ Gemini        │ https://makersuite.google.com/app/apikey            │
+│ OpenRouter    │ https://openrouter.ai/keys                          │
+└───────────────┴─────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────┐
+│ 💰 CHECK CREDITS/BILLING                                            │
+├───────────────┬─────────────────────────────────────────────────────┤
+│ OpenAI        │ https://platform.openai.com/account/billing         │
+│ Claude        │ https://console.anthropic.com/settings/billing      │
+│ Gemini        │ FREE tier (60 req/min)                              │
+│ OpenRouter    │ https://openrouter.ai/credits                       │
+└───────────────┴─────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────┐
+│ 💵 APPROXIMATE COSTS                                                │
+├───────────────┬──────────────┬──────────────────────────────────────┤
+│ Platform      │ Per Request  │ Notes                                │
+├───────────────┼──────────────┼──────────────────────────────────────┤
+│ OpenAI        │ $0.005       │ Requires $5 minimum                  │
+│ Claude        │ $0.015       │ Paid plan or prepaid credits         │
+│ Gemini        │ FREE         │ Best for testing/development         │
+│ OpenRouter    │ $0.001-0.01  │ Varies by model selected             │
+└───────────────┴──────────────┴──────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────┐
+│ ⚡ COMMON MISTAKES                                                   │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                     │
+│  ❌ Copied key with extra spaces:                                   │
+│     sk-proj-abc  def  (WRONG)                                       │
+│                                                                     │
+│  ✅ Clean key without spaces:                                       │
+│     sk-proj-abcdef (CORRECT)                                        │
+│                                                                     │
+│  ❌ Using old/revoked keys                                          │
+│  ✅ Generate fresh keys from platform                               │
+│                                                                     │
+│  ❌ No billing/credits set up                                       │
+│  ✅ Add payment method and credits                                  │
+│                                                                     │
+└─────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────┐
+│ 📝 WHAT GETS TESTED                                                 │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                     │
+│  1. Key Format Validation                                           │
+│     • Correct prefix (sk-, AIza, etc.)                              │
+│     • Proper length and characters                                  │
+│                                                                     │
+│  2. API Connectivity                                                │
+│     • Can reach the API endpoint                                    │
+│     • Authentication works                                          │
+│                                                                     │
+│  3. Response Quality                                                │
+│     • Sends: "What is 2 + 2?"                                       │
+│     • Expects: "4" (or similar)                                     │
+│     • Token usage reported                                          │
+│                                                                     │
+└─────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────┐
+│ 🎯 RECOMMENDED TESTING SCHEDULE                                     │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                     │
+│  • First time setup:  Test ALL platforms                            │
+│  • Adding new key:    Test that platform only                       │
+│  • After API errors:  Re-test failing platform                      │
+│  • Monthly check:     Verify all keys still work                    │
+│                                                                     │
+└─────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────┐
+│ 🔄 NEXT STEPS AFTER TESTING                                         │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                     │
+│  IF ALL TESTS PASSED ✅                                             │
+│  → Open Chrome Extensions (chrome://extensions)                     │
+│  → Click "Reload" on SmartLens AI                                   │
+│  → Your extension is ready to use!                                  │
+│                                                                     │
+│  IF SOME TESTS FAILED ⚠️                                            │
+│  → Fix failing platforms using tips above                           │
+│  → Re-run: node test_apis.js                                        │
+│  → Use working platforms in the meantime                            │
+│                                                                     │
+│  IF ALL TESTS FAILED ❌                                             │
+│  → Verify internet connection                                       │
+│  → Check if keys were copied correctly                              │
+│  → Ensure billing/credits are set up                                │
+│  → Try again in a few minutes                                       │
+│                                                                     │
+└─────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────┐
+│ 🆘 NEED HELP?                                                       │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                     │
+│  Read these guides:                                                 │
+│  • API_TESTING_GUIDE.md  - Full testing documentation               │
+│  • API_FIX_GUIDE.md      - General API troubleshooting              │
+│  • MULTI_PLATFORM_GUIDE.md - Platform details                       │
+│                                                                     │
+│  Platform documentation:                                            │
+│  • OpenAI:     https://platform.openai.com/docs                     │
+│  • Claude:     https://docs.anthropic.com                           │
+│  • Gemini:     https://ai.google.dev/docs                           │
+│  • OpenRouter: https://openrouter.ai/docs                           │
+│                                                                     │
+└─────────────────────────────────────────────────────────────────────┘
+
+╔════════════════════════════════════════════════════════════════════╗
+║  💡 TIP: Test with Gemini first - it's FREE and has no minimum!   ║
+╚════════════════════════════════════════════════════════════════════╝

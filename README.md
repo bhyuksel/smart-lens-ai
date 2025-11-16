@@ -125,22 +125,93 @@ async function processWithAI(input, apiKey) {
 }
 ```
 
+## 🧪 Testing Your API Keys
+
+Before using the extension, test your API keys to ensure they work correctly:
+
+### Quick Test
+
+```bash
+# Run the interactive testing script
+node test_apis.js
+```
+
+The script will:
+
+- ✅ Validate your API key format
+- 🔌 Test connectivity to each platform
+- 💬 Verify responses are working
+- 📊 Show token usage and costs
+
+### Testing Documentation
+
+- **[API_TESTING_GUIDE.md](./API_TESTING_GUIDE.md)** - Complete testing guide
+- **[API_TEST_QUICK_REF.txt](./API_TEST_QUICK_REF.txt)** - Quick reference card
+- **[test_apis_demo.js](./test_apis_demo.js)** - Programmatic testing examples
+
+### What Gets Tested
+
+Each platform test includes:
+
+| Test Step         | What It Checks                                              |
+| ----------------- | ----------------------------------------------------------- |
+| Format Validation | Key starts with correct prefix and matches expected pattern |
+| API Connection    | Can reach the API endpoint and authenticate successfully    |
+| Response Quality  | Sends a simple math question and verifies the answer        |
+| Token Usage       | Reports how many tokens were used (cost tracking)           |
+
+### Example Output
+
+```
+Testing OpenAI
+================================================================
+
+Step 1: Validating API key format...
+✅ Key format is valid
+
+Step 2: Testing API connection...
+ℹ️  Testing OpenAI API...
+✅ OpenAI responded: "4"
+ℹ️  Model: gpt-4o-mini
+ℹ️  Tokens used: 25
+
+✨ OpenAI is working correctly!
+```
+
+### Troubleshooting
+
+If a test fails, the script provides:
+
+- ❌ Clear error messages
+- 💡 Platform-specific troubleshooting tips
+- 🔗 Direct links to verify/manage your API keys
+- 💰 Links to check your credits/billing
+
+See [API_FIX_GUIDE.md](./API_FIX_GUIDE.md) for detailed troubleshooting.
+
 ## 📁 Project Structure
 
 ```
 smart_lens_ai/
-├── manifest.json          # Extension configuration
-├── popup.html            # Extension popup interface
-├── popup.css             # Popup styles
-├── popup.js              # Popup logic
-├── content.js            # Content script (page interaction)
-├── content.css           # Content styles
-├── background.js         # Service worker (AI processing)
-├── icons/                # Extension icons
+├── manifest.json              # Extension configuration
+├── popup.html                # Extension popup interface
+├── popup.css                 # Popup styles
+├── popup.js                  # Popup logic & multi-platform key management
+├── content.js                # Content script (page interaction)
+├── content.css               # Content styles
+├── background.js             # Service worker (AI processing, multi-platform)
+├── icons/                    # Extension icons
 │   ├── icon16.png
 │   ├── icon48.png
 │   └── icon128.png
-└── README.md             # Documentation
+├── test_apis.js              # 🧪 API testing script (interactive)
+├── test_apis_demo.js         # 📝 Testing examples (programmatic)
+├── README.md                 # Main documentation
+├── QUICKSTART.md             # 5-minute setup guide
+├── MULTI_PLATFORM_GUIDE.md   # Multi-platform feature guide
+├── API_TESTING_GUIDE.md      # Complete testing documentation
+├── API_TEST_QUICK_REF.txt    # Quick reference card
+└── API_FIX_GUIDE.md          # Troubleshooting guide
 ```
 
 ## 🎨 Customization
