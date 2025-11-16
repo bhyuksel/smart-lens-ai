@@ -1,0 +1,20 @@
+{
+  "name": "smart-lens-ai",
+  "version": "1.0.0",
+  "description": "SmartLens AI - Multimodal Autonomous Reasoning Agent Chrome Extension",
+  "scripts": {
+    "dev": "echo 'Load extension from chrome://extensions/ in Developer Mode'",
+    "build": "echo 'Extension ready for distribution'",
+    "icons": "cd icons && bash create_icons.sh"
+  },
+  "keywords": [
+    "chrome-extension",
+    "ai",
+    "ocr",
+    "vision",
+    "multimodal",
+    "smart-assistant"
+  ],
+  "author": "SmartLens AI Team",
+  "license": "MIT"
+}

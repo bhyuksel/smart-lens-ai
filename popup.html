@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SmartLens AI</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>🔍 SmartLens AI</h1>
+        <p class="tagline">Multimodal Autonomous Reasoning Agent</p>
+      </header>
+
+      <div class="mode-section">
+        <h3>Select Mode</h3>
+        <div class="mode-buttons">
+          <button class="mode-btn" data-mode="auto">🤖 Auto Detect</button>
+          <button class="mode-btn" data-mode="grammar">✍️ Grammar</button>
+          <button class="mode-btn" data-mode="solve">🧠 Solve Question</button>
+          <button class="mode-btn" data-mode="summarize">📝 Summarize</button>
+          <button class="mode-btn" data-mode="explain">💡 Explain</button>
+        </div>
+      </div>
+
+      <div class="action-section">
+        <button id="captureBtn" class="primary-btn">
+          📸 Capture Screen Area
+        </button>
+        <button id="analyzeTextBtn" class="secondary-btn">
+          📋 Analyze Selected Text
+        </button>
+      </div>
+
+      <div class="settings-section">
+        <h3>API Settings</h3>
+        <input type="password" id="apiKey" placeholder="Enter your API key" />
+        <button id="saveApiKey" class="save-btn">Save</button>
+      </div>
+
+      <div class="status" id="status"></div>
+    </div>
+
+    <script src="popup.js"></script>
+  </body>
+</html>

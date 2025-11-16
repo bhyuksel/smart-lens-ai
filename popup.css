@@ -1,0 +1,178 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 350px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #333;
+}
+
+.container {
+  background: white;
+  border-radius: 8px;
+  margin: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+header {
+  text-align: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+h1 {
+  font-size: 24px;
+  color: #667eea;
+  margin-bottom: 5px;
+}
+
+.tagline {
+  font-size: 11px;
+  color: #666;
+  font-weight: 500;
+}
+
+h3 {
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.mode-section {
+  margin-bottom: 20px;
+}
+
+.mode-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.mode-btn {
+  padding: 10px;
+  border: 2px solid #e0e0e0;
+  background: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.mode-btn:hover {
+  border-color: #667eea;
+  background: #f8f9ff;
+  transform: translateY(-2px);
+}
+
+.mode-btn.active {
+  border-color: #667eea;
+  background: #667eea;
+  color: white;
+}
+
+.action-section {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.primary-btn {
+  padding: 14px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: transform 0.2s ease;
+}
+
+.primary-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(102, 126, 234, 0.4);
+}
+
+.secondary-btn {
+  padding: 12px;
+  background: white;
+  color: #667eea;
+  border: 2px solid #667eea;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.secondary-btn:hover {
+  background: #667eea;
+  color: white;
+}
+
+.settings-section {
+  margin-bottom: 15px;
+  padding-top: 15px;
+  border-top: 2px solid #f0f0f0;
+}
+
+#apiKey {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #e0e0e0;
+  border-radius: 6px;
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+
+#apiKey:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.save-btn {
+  width: 100%;
+  padding: 10px;
+  background: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+
+.save-btn:hover {
+  background: #45a049;
+}
+
+.status {
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  text-align: center;
+  display: none;
+}
+
+.status.success {
+  display: block;
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.status.error {
+  display: block;
+  background: #ffebee;
+  color: #c62828;
+}
