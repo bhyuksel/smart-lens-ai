@@ -37,7 +37,7 @@ async function processWithAI_OpenAI(input, apiKey) {
         Authorization: `Bearer ${apiKey}`,
       },
       body: JSON.stringify({
-        model: input.type === "image" ? "gpt-4-vision-preview" : "gpt-4-turbo",
+        model: input.type === "image" ? "gpt-4o" : "gpt-4o-mini",
         messages: messages,
         max_tokens: 1500,
         temperature: 0.7,

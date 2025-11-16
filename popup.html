@@ -34,9 +34,29 @@
       </div>
 
       <div class="settings-section">
-        <h3>API Settings</h3>
-        <input type="password" id="apiKey" placeholder="Enter your API key" />
-        <button id="saveApiKey" class="save-btn">Save</button>
+        <h3>🔑 API Configuration</h3>
+
+        <label for="apiPlatform">Select Platform</label>
+        <select id="apiPlatform" class="platform-select">
+          <option value="openai">OpenAI (GPT-4o)</option>
+          <option value="claude">Anthropic Claude</option>
+          <option value="gemini">Google Gemini</option>
+          <option value="openrouter">OpenRouter</option>
+        </select>
+
+        <label for="apiKey">API Key</label>
+        <input
+          type="password"
+          id="apiKey"
+          placeholder="Enter API key for selected platform"
+        />
+
+        <button id="saveApiKey" class="save-btn">💾 Save API Key</button>
+
+        <div class="saved-keys" id="savedKeys">
+          <h4>Saved Platforms</h4>
+          <div id="keysList" class="keys-list"></div>
+        </div>
       </div>
 
       <div class="status" id="status"></div>
