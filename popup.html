@@ -31,6 +31,36 @@
         <button id="analyzeTextBtn" class="secondary-btn">
           📋 Analyze Selected Text
         </button>
+        <button id="scanTableBtn" class="table-btn">📊 Scan Data Table</button>
+      </div>
+
+      <!-- Table Scanner Section -->
+      <div class="table-section" id="tableSection" style="display: none">
+        <div class="table-header">
+          <h3>📊 Table Scanner</h3>
+          <button id="closeTableSection" class="close-section-btn">✕</button>
+        </div>
+        <div class="table-options">
+          <label>Export Format:</label>
+          <div class="format-buttons">
+            <button class="format-btn active" data-format="json">JSON</button>
+            <button class="format-btn" data-format="csv">CSV</button>
+            <button class="format-btn" data-format="toml">TOML</button>
+            <button class="format-btn" data-format="markdown">Markdown</button>
+          </div>
+        </div>
+        <div class="table-preview" id="tablePreview">
+          <p class="empty-state">Click on a table in the page to scan it</p>
+        </div>
+        <div class="table-actions" id="tableActions" style="display: none">
+          <button id="copyTableData" class="action-btn copy">📋 Copy</button>
+          <button id="downloadTableData" class="action-btn download">
+            💾 Download
+          </button>
+          <button id="analyzeTableAI" class="action-btn analyze">
+            🤖 Analyze with AI
+          </button>
+        </div>
       </div>
 
       <!-- History Section -->

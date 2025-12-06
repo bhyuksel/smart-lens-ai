@@ -284,6 +284,366 @@ chrome.storage.local.get(["selectedMode", "activePlatform"], (result) => {
 });
 
 // ============================================================================
+// TABLE SCANNER FUNCTIONALITY
+// ============================================================================
+
+let currentTableData = null;
+let selectedFormat = "json";
+
+// Format button selection
+document.querySelectorAll(".format-btn").forEach((btn) => {
+  btn.addEventListener("click", function () {
+    document
+      .querySelectorAll(".format-btn")
+      .forEach((b) => b.classList.remove("active"));
+    this.classList.add("active");
+    selectedFormat = this.dataset.format;
+
+    // Re-render preview if we have data
+    if (currentTableData) {
+      renderTablePreview(currentTableData, selectedFormat);
+    }
+  });
+});
+
+// Scan Table button
+document.getElementById("scanTableBtn").addEventListener("click", async () => {
+  try {
+    const [tab] = await chrome.tabs.query({
+      active: true,
+      currentWindow: true,
+    });
+
+    // Inject content script if not already
+    await chrome.scripting.executeScript({
+      target: { tabId: tab.id },
+      files: ["content.js"],
+    });
+
+    // Get tables from page
+    const results = await chrome.scripting.executeScript({
+      target: { tabId: tab.id },
+      func: scanTablesOnPage,
+    });
+
+    const tables = results[0]?.result || [];
+
+    if (tables.length === 0) {
+      showStatus("⚠️ No tables found on this page", "error");
+      return;
+    }
+
+    // Show table section
+    document.getElementById("tableSection").style.display = "block";
+
+    // If only one table, use it directly
+    if (tables.length === 1) {
+      currentTableData = tables[0];
+      renderTablePreview(currentTableData, selectedFormat);
+      document.getElementById("tableActions").style.display = "flex";
+      showStatus(
+        `✅ Found 1 table (${currentTableData.rows} rows × ${currentTableData.cols} cols)`,
+        "success"
+      );
+    } else {
+      // Multiple tables - show selector
+      showTableSelector(tables);
+      showStatus(`✅ Found ${tables.length} tables`, "success");
+    }
+  } catch (error) {
+    showStatus("Error: " + error.message, "error");
+  }
+});
+
+// Function to scan tables (runs in page context)
+function scanTablesOnPage() {
+  const tables = document.querySelectorAll("table");
+  const result = [];
+
+  tables.forEach((table, index) => {
+    const rows = table.querySelectorAll("tr");
+    if (rows.length === 0) return;
+
+    const data = [];
+    let headers = [];
+
+    rows.forEach((row, rowIndex) => {
+      const cells = row.querySelectorAll("th, td");
+      const rowData = [];
+
+      cells.forEach((cell) => {
+        rowData.push(cell.textContent.trim());
+      });
+
+      if (rowIndex === 0 && row.querySelectorAll("th").length > 0) {
+        headers = rowData;
+      } else {
+        data.push(rowData);
+      }
+    });
+
+    // If no headers found, use first row as headers
+    if (headers.length === 0 && data.length > 0) {
+      headers = data.shift();
+    }
+
+    if (headers.length > 0 || data.length > 0) {
+      result.push({
+        index: index,
+        headers: headers,
+        data: data,
+        rows: data.length,
+        cols: headers.length || (data[0] ? data[0].length : 0),
+        preview:
+          headers.slice(0, 3).join(", ") + (headers.length > 3 ? "..." : ""),
+      });
+    }
+  });
+
+  return result;
+}
+
+// Show table selector for multiple tables
+function showTableSelector(tables) {
+  const preview = document.getElementById("tablePreview");
+  let html = '<div class="table-selector">';
+
+  tables.forEach((table, i) => {
+    html += `
+      <div class="table-selector-item" data-index="${i}">
+        <div class="table-info">
+          <span>📊 Table ${i + 1}: ${table.preview || "No headers"}</span>
+          <span class="table-info-badge">${table.rows} × ${table.cols}</span>
+        </div>
+      </div>
+    `;
+  });
+
+  html += "</div>";
+  preview.innerHTML = html;
+
+  // Store tables for selection
+  window.scannedTables = tables;
+
+  // Add click handlers
+  preview.querySelectorAll(".table-selector-item").forEach((item) => {
+    item.addEventListener("click", function () {
+      const index = parseInt(this.dataset.index);
+      selectTable(index);
+    });
+  });
+}
+
+// Select a specific table
+function selectTable(index) {
+  currentTableData = window.scannedTables[index];
+  renderTablePreview(currentTableData, selectedFormat);
+  document.getElementById("tableActions").style.display = "flex";
+}
+
+// Render table preview in selected format
+function renderTablePreview(tableData, format) {
+  const preview = document.getElementById("tablePreview");
+  let output = "";
+
+  switch (format) {
+    case "json":
+      output = convertToJSON(tableData);
+      preview.innerHTML = syntaxHighlightJSON(output);
+      break;
+    case "csv":
+      output = convertToCSV(tableData);
+      preview.textContent = output;
+      break;
+    case "toml":
+      output = convertToTOML(tableData);
+      preview.textContent = output;
+      break;
+    case "markdown":
+      output = convertToMarkdown(tableData);
+      preview.textContent = output;
+      break;
+    default:
+      output = convertToJSON(tableData);
+      preview.innerHTML = syntaxHighlightJSON(output);
+  }
+
+  // Store formatted output
+  currentTableData.formattedOutput = output;
+}
+
+// Convert to JSON
+function convertToJSON(tableData) {
+  const result = tableData.data.map((row) => {
+    const obj = {};
+    tableData.headers.forEach((header, i) => {
+      let value = row[i] || "";
+      // Try to parse numbers
+      if (!isNaN(value) && value !== "") {
+        value = parseFloat(value);
+      }
+      obj[header || `column_${i + 1}`] = value;
+    });
+    return obj;
+  });
+  return JSON.stringify(result, null, 2);
+}
+
+// Convert to CSV
+function convertToCSV(tableData) {
+  const escapeCSV = (val) => {
+    if (val === null || val === undefined) return "";
+    const str = String(val);
+    if (str.includes(",") || str.includes('"') || str.includes("\n")) {
+      return `"${str.replace(/"/g, '""')}"`;
+    }
+    return str;
+  };
+
+  const headerRow = tableData.headers.map(escapeCSV).join(",");
+  const dataRows = tableData.data
+    .map((row) => row.map(escapeCSV).join(","))
+    .join("\n");
+
+  return headerRow + "\n" + dataRows;
+}
+
+// Convert to TOML
+function convertToTOML(tableData) {
+  let output = "# Table data exported by SmartLens AI\n\n";
+
+  tableData.data.forEach((row, i) => {
+    output += `[[records]]\n`;
+    tableData.headers.forEach((header, j) => {
+      const key =
+        header.replace(/[^a-zA-Z0-9_]/g, "_").toLowerCase() ||
+        `column_${j + 1}`;
+      let value = row[j] || "";
+
+      if (!isNaN(value) && value !== "") {
+        output += `${key} = ${parseFloat(value)}\n`;
+      } else {
+        output += `${key} = "${value.replace(/"/g, '\\"')}"\n`;
+      }
+    });
+    output += "\n";
+  });
+
+  return output;
+}
+
+// Convert to Markdown
+function convertToMarkdown(tableData) {
+  const headers = tableData.headers.map((h) => h || "-").join(" | ");
+  const separator = tableData.headers.map(() => "---").join(" | ");
+  const rows = tableData.data
+    .map((row) => row.map((cell) => cell || "-").join(" | "))
+    .join("\n");
+
+  return `| ${headers} |\n| ${separator} |\n${tableData.data
+    .map((row) => `| ${row.map((cell) => cell || "-").join(" | ")} |`)
+    .join("\n")}`;
+}
+
+// Syntax highlight JSON
+function syntaxHighlightJSON(json) {
+  return json
+    .replace(/(".*?"):/g, '<span class="json-key">$1</span>:')
+    .replace(/: (".*?")/g, ': <span class="json-string">$1</span>')
+    .replace(/: (\d+\.?\d*)/g, ': <span class="json-number">$1</span>')
+    .replace(/: (true|false|null)/g, ': <span class="json-boolean">$1</span>');
+}
+
+// Close table section
+document.getElementById("closeTableSection").addEventListener("click", () => {
+  document.getElementById("tableSection").style.display = "none";
+  currentTableData = null;
+});
+
+// Copy table data
+document.getElementById("copyTableData").addEventListener("click", async () => {
+  if (!currentTableData || !currentTableData.formattedOutput) {
+    showStatus("⚠️ No data to copy", "error");
+    return;
+  }
+
+  try {
+    await navigator.clipboard.writeText(currentTableData.formattedOutput);
+    showStatus("✅ Copied to clipboard!", "success");
+  } catch (err) {
+    // Fallback
+    const textarea = document.createElement("textarea");
+    textarea.value = currentTableData.formattedOutput;
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand("copy");
+    document.body.removeChild(textarea);
+    showStatus("✅ Copied to clipboard!", "success");
+  }
+});
+
+// Download table data
+document.getElementById("downloadTableData").addEventListener("click", () => {
+  if (!currentTableData || !currentTableData.formattedOutput) {
+    showStatus("⚠️ No data to download", "error");
+    return;
+  }
+
+  const extensions = { json: "json", csv: "csv", toml: "toml", markdown: "md" };
+  const mimeTypes = {
+    json: "application/json",
+    csv: "text/csv",
+    toml: "application/toml",
+    markdown: "text/markdown",
+  };
+
+  const blob = new Blob([currentTableData.formattedOutput], {
+    type: mimeTypes[selectedFormat] || "text/plain",
+  });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = `table_data.${extensions[selectedFormat] || "txt"}`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+
+  showStatus("💾 Downloaded!", "success");
+});
+
+// Analyze table with AI
+document
+  .getElementById("analyzeTableAI")
+  .addEventListener("click", async () => {
+    if (!currentTableData) {
+      showStatus("⚠️ No table data to analyze", "error");
+      return;
+    }
+
+    try {
+      const [tab] = await chrome.tabs.query({
+        active: true,
+        currentWindow: true,
+      });
+
+      // Send table data for AI analysis
+      const jsonData = convertToJSON(currentTableData);
+      const prompt = `Analyze this data table and provide insights:\n\n${jsonData}`;
+
+      chrome.tabs.sendMessage(tab.id, {
+        action: "analyzeText",
+        mode: "auto",
+        text: prompt,
+      });
+
+      window.close();
+    } catch (error) {
+      showStatus("Error: " + error.message, "error");
+    }
+  });
+
+// ============================================================================
 // HISTORY MANAGEMENT
 // ============================================================================
 

@@ -70,11 +70,32 @@ Welcome! This is your guide to all the documentation for SmartLens AI.
    - How the fix works
    - Testing instructions
 
-9. **[MODEL_UPDATE.md](./MODEL_UPDATE.md)**
-   - OpenAI model deprecation fixes
-   - Updated model names
-   - Migration guide
-   - Historical context
+---
+
+## 📊 Feature Documentation
+
+**Detailed feature guides:**
+
+9. **[TABLE_SCANNER.md](./TABLE_SCANNER.md)** 🆕 NEW!
+
+   - Scan HTML tables from any webpage
+   - Export to JSON, CSV, TOML, Markdown
+   - Copy/Download/AI Analyze options
+   - Complete usage guide
+
+10. **[HISTORY_FEATURE.md](./HISTORY_FEATURE.md)**
+
+    - Analysis history tracking
+    - Copy/View/Delete actions
+    - Storage management
+    - Privacy & security
+
+11. **[MODEL_UPDATE.md](./MODEL_UPDATE.md)**
+
+- OpenAI model deprecation fixes
+- Updated model names
+- Migration guide
+- Historical context
 
 ---
 

@@ -40,6 +40,36 @@ SmartLens AI is an intelligent Chrome extension that analyzes text, images, audi
 - Beautiful, modern UI
 - Real-time notifications
 - **📜 Analysis History** - Track all analyses with copy/view/delete actions
+- **📊 Table Scanner** - Extract data tables to JSON, CSV, TOML, or Markdown
+
+## 📊 Table Scanner
+
+SmartLens AI can detect and extract HTML tables from any webpage:
+
+### Features
+
+- **🔍 Auto-Detection**: Finds all tables on the current page
+- **📋 Multiple Formats**: Export to JSON, CSV, TOML, or Markdown
+- **📋 Copy & Download**: One-click copy or download as file
+- **🤖 AI Analysis**: Analyze table data with AI for insights
+- **🎨 Syntax Highlighting**: Beautiful JSON preview with colors
+
+### How to Use
+
+1. Click the SmartLens AI extension icon
+2. Click "📊 Scan Data Table" button
+3. If multiple tables found, select one from the list
+4. Choose your export format (JSON, CSV, TOML, Markdown)
+5. Use Copy, Download, or Analyze with AI buttons
+
+### Export Formats
+
+| Format   | Description              | Best For                    |
+| -------- | ------------------------ | --------------------------- |
+| JSON     | Structured object array  | APIs, programming           |
+| CSV      | Comma-separated values   | Excel, spreadsheets         |
+| TOML     | Configuration format     | Config files, data exchange |
+| Markdown | Table in markdown syntax | Documentation, notes        |
 
 ## 🚀 Installation
 

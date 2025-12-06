@@ -1,0 +1,156 @@
+╔══════════════════════════════════════════════════════════════════╗
+║          SmartLens AI - TABLE SCANNER FEATURE                    ║
+╚══════════════════════════════════════════════════════════════════╝
+
+🎉 NEW FEATURE: Scan HTML tables and export to multiple formats!
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📋 EXPORT FORMATS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  📄 JSON     → Structured array of objects (APIs, programming)
+  📊 CSV      → Comma-separated values (Excel, spreadsheets)
+  ⚙️  TOML     → Configuration format (config files, Rust/Go)
+  📝 Markdown → Table syntax (documentation, README files)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 HOW TO USE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  1️⃣  Click SmartLens AI extension icon
+  2️⃣  Click "📊 Scan Data Table" button (green)
+  3️⃣  If multiple tables → select one from list
+  4️⃣  Choose format: JSON / CSV / TOML / Markdown
+  5️⃣  Click action button:
+      • 📋 Copy     → Copy to clipboard
+      • 💾 Download → Save as file
+      • 🤖 Analyze  → Send to AI for insights
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📊 EXAMPLE OUTPUT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Source Table:
+┌─────────┬─────┬───────────┐
+│ Name    │ Age │ City      │
+├─────────┼─────┼───────────┤
+│ Alice   │ 30  │ New York  │
+│ Bob     │ 25  │ London    │
+└─────────┴─────┴───────────┘
+
+JSON:
+[
+  {"Name": "Alice", "Age": 30, "City": "New York"},
+  {"Name": "Bob", "Age": 25, "City": "London"}
+]
+
+CSV:
+Name,Age,City
+Alice,30,New York
+Bob,25,London
+
+TOML:
+[[records]]
+name = "Alice"
+age = 30
+city = "New York"
+
+[[records]]
+name = "Bob"
+age = 25
+city = "London"
+
+Markdown:
+| Name | Age | City |
+| --- | --- | --- |
+| Alice | 30 | New York |
+| Bob | 25 | London |
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🎨 UI PREVIEW
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+┌────────────────────────────────────────────────────────────────┐
+│                                                                │
+│  📊 Table Scanner                                          ✕  │
+│                                                                │
+│  Export Format:                                                │
+│  ┌──────┐ ┌─────┐ ┌──────┐ ┌──────────┐                       │
+│  │ JSON │ │ CSV │ │ TOML │ │ Markdown │                       │
+│  └──────┘ └─────┘ └──────┘ └──────────┘                       │
+│                                                                │
+│  ┌────────────────────────────────────────────────────────┐   │
+│  │  {                                                     │   │
+│  │    "Name": "Alice",                                    │   │
+│  │    "Age": 30,                                          │   │
+│  │    "City": "New York"                                  │   │
+│  │  }                                                     │   │
+│  └────────────────────────────────────────────────────────┘   │
+│                                                                │
+│  ┌──────────┐  ┌────────────┐  ┌───────────────────┐         │
+│  │ 📋 Copy  │  │ 💾 Download │  │ 🤖 Analyze with AI │         │
+│  └──────────┘  └────────────┘  └───────────────────┘         │
+│                                                                │
+└────────────────────────────────────────────────────────────────┘
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🎯 BUTTON ACTIONS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  📊 Scan Data Table (green button)
+     └─ Opens table scanner, finds all tables on page
+
+  Format Buttons:
+     └─ JSON    → Object array with key:value pairs
+     └─ CSV     → Comma-separated, Excel compatible
+     └─ TOML    → Config format with [[records]]
+     └─ Markdown → Table with | pipes |
+
+  📋 Copy
+     └─ Copies formatted data to clipboard
+     └─ Ready to paste anywhere
+
+  💾 Download  
+     └─ Saves file with correct extension
+     └─ .json / .csv / .toml / .md
+
+  🤖 Analyze with AI
+     └─ Sends table data to selected AI
+     └─ Gets insights and analysis
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📁 FILES MODIFIED
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  popup.html   → Added table section HTML
+  popup.css    → Added ~200 lines of table styles
+  popup.js     → Added ~300 lines of table functions
+  content.js   → Added table highlighting support
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+💡 TIPS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  ✓ Works with any HTML <table> element
+  ✓ Numbers are auto-detected in JSON/TOML
+  ✓ CSV handles commas and quotes properly
+  ✓ Multiple tables? Click to select one
+  ✓ AI analysis gives data insights
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🔄 TO TEST
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  1. Reload extension in chrome://extensions/
+  2. Visit any page with tables (Wikipedia, etc.)
+  3. Click extension → "📊 Scan Data Table"
+  4. Test all 4 formats
+  5. Try Copy, Download, and AI Analyze
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✨ Status: COMPLETE & READY TO USE ✨
+
+For detailed documentation, see TABLE_SCANNER.md
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

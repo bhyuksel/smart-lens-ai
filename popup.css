@@ -555,3 +555,256 @@ label {
   background: #e2d9f3;
   color: #5a2a82;
 }
+
+/* ============================================================================
+   TABLE SCANNER STYLES
+   ============================================================================ */
+
+.table-btn {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  margin-top: 8px;
+}
+
+.table-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(17, 153, 142, 0.4);
+}
+
+.table-section {
+  margin-top: 15px;
+  padding: 15px;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
+  border-radius: 10px;
+  border: 2px solid #11998e;
+}
+
+.table-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.table-header h3 {
+  margin: 0;
+  color: #11998e;
+}
+
+.close-section-btn {
+  width: 24px;
+  height: 24px;
+  border: none;
+  background: #e0e0e0;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 14px;
+  color: #666;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.close-section-btn:hover {
+  background: #ff5252;
+  color: white;
+}
+
+.table-options {
+  margin-bottom: 12px;
+}
+
+.table-options label {
+  font-size: 11px;
+  color: #666;
+  margin-bottom: 6px;
+}
+
+.format-buttons {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.format-btn {
+  padding: 6px 12px;
+  border: 2px solid #11998e;
+  background: white;
+  color: #11998e;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.format-btn:hover {
+  background: #e8f5e9;
+}
+
+.format-btn.active {
+  background: #11998e;
+  color: white;
+}
+
+.table-preview {
+  background: #1e1e1e;
+  border-radius: 8px;
+  padding: 12px;
+  max-height: 200px;
+  overflow: auto;
+  font-family: "Consolas", "Monaco", monospace;
+  font-size: 11px;
+  color: #d4d4d4;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.table-preview::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.table-preview::-webkit-scrollbar-track {
+  background: #2d2d2d;
+  border-radius: 3px;
+}
+
+.table-preview::-webkit-scrollbar-thumb {
+  background: #11998e;
+  border-radius: 3px;
+}
+
+.table-preview .empty-state {
+  color: #888;
+  font-style: italic;
+  text-align: center;
+  padding: 20px;
+}
+
+.table-preview .json-key {
+  color: #9cdcfe;
+}
+
+.table-preview .json-string {
+  color: #ce9178;
+}
+
+.table-preview .json-number {
+  color: #b5cea8;
+}
+
+.table-preview .json-boolean {
+  color: #569cd6;
+}
+
+.table-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.action-btn {
+  flex: 1;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 600;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.action-btn.copy {
+  background: #2196f3;
+  color: white;
+}
+
+.action-btn.copy:hover {
+  background: #1976d2;
+}
+
+.action-btn.download {
+  background: #ff9800;
+  color: white;
+}
+
+.action-btn.download:hover {
+  background: #f57c00;
+}
+
+.action-btn.analyze {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.action-btn.analyze:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.4);
+}
+
+/* Table count badge */
+.table-count {
+  display: inline-block;
+  background: #11998e;
+  color: white;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 10px;
+  margin-left: 8px;
+}
+
+/* Table selector in page */
+.table-selector-item {
+  padding: 8px 12px;
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  margin-bottom: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 12px;
+}
+
+.table-selector-item:hover {
+  border-color: #11998e;
+  background: #e8f5e9;
+}
+
+.table-selector-item.selected {
+  border-color: #11998e;
+  background: #11998e;
+  color: white;
+}
+
+.table-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.table-info-badge {
+  font-size: 10px;
+  padding: 2px 6px;
+  background: #e0e0e0;
+  border-radius: 4px;
+  color: #666;
+}
+
+.table-selector-item.selected .table-info-badge {
+  background: rgba(255, 255, 255, 0.3);
+  color: white;
+}
