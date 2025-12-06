@@ -89,6 +89,15 @@ async function handleCaptureProcessing(data, tab) {
       config.platform
     );
 
+    // Save to history
+    await saveToHistory({
+      type: "image",
+      input: `Screen capture (${data.width}x${data.height})`,
+      result: result,
+      mode: data.mode,
+      platform: config.platform,
+    });
+
     // Show result
     showResultPopup(tab.id, result);
   } catch (error) {
@@ -122,6 +131,15 @@ async function handleTextProcessing(data, tab) {
       config.apiKey,
       config.platform
     );
+
+    // Save to history
+    await saveToHistory({
+      type: "text",
+      input: data.text,
+      result: result,
+      mode: data.mode,
+      platform: config.platform,
+    });
 
     // Show result
     showResultPopup(tab.id, result);
@@ -446,6 +464,35 @@ function parseAIResponse(content) {
       result: content,
       notes: "",
     };
+  }
+}
+
+// Save analysis to history
+async function saveToHistory(data) {
+  try {
+    const result = await chrome.storage.local.get(["analysisHistory"]);
+    let history = result.analysisHistory || [];
+
+    // Add new entry with timestamp
+    const historyEntry = {
+      timestamp: new Date().toISOString(),
+      type: data.type,
+      input: data.input,
+      result: data.result,
+      mode: data.mode,
+      platform: data.platform,
+    };
+
+    history.push(historyEntry);
+
+    // Keep only last 100 entries to prevent storage bloat
+    if (history.length > 100) {
+      history = history.slice(-100);
+    }
+
+    await chrome.storage.local.set({ analysisHistory: history });
+  } catch (error) {
+    console.error("Error saving to history:", error);
   }
 }
 

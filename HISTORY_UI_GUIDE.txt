@@ -1,0 +1,262 @@
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃                  SmartLens AI - History Feature                      ┃
+┃                       Visual UI Preview                              ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+┌────────────────────────────────────────────────────────────────────┐
+│                                                                    │
+│  🔍 SmartLens AI                                                  │
+│  Multimodal Autonomous Reasoning Agent                            │
+│                                                                    │
+│  ┌──────────────────────────────────────────────────────────────┐ │
+│  │                     Select Mode                              │ │
+│  ├──────────────────────────────────────────────────────────────┤ │
+│  │  [🤖 Auto]  [✍️ Grammar]  [🧠 Solve]  [📝 Summ]  [💡 Exp]  │ │
+│  └──────────────────────────────────────────────────────────────┘ │
+│                                                                    │
+│  ┌──────────────────────────────────────────────────────────────┐ │
+│  │         [📸 Capture Screen Area]                             │ │
+│  │         [📋 Analyze Selected Text]                           │ │
+│  └──────────────────────────────────────────────────────────────┘ │
+│                                                                    │
+│  ╔══════════════════════════════════════════════════════════════╗ │
+│  ║  📜 Analysis History                        🗑️ Clear         ║ │
+│  ╠══════════════════════════════════════════════════════════════╣ │
+│  ║  ┌────────────────────────────────────────────────────────┐  ║ │
+│  ║  │ [📝 SUMMARIZE] [openai]              2 minutes ago     │  ║ │
+│  ║  │                                                        │  ║ │
+│  ║  │ Can you summarize this article about AI advances?     │  ║ │
+│  ║  │                                                        │  ║ │
+│  ║  │ ┌────────────────────────────────────────────────────┐│  ║ │
+│  ║  │ │ This article discusses recent breakthroughs in    ││  ║ │
+│  ║  │ │ artificial intelligence, particularly in natural  ││  ║ │
+│  ║  │ │ language processing and computer vision...        ││  ║ │
+│  ║  │ └────────────────────────────────────────────────────┘│  ║ │
+│  ║  │                                                        │  ║ │
+│  ║  │  [📋 Copy]    [👁️ View]    [🗑️ Delete]              │  ║ │
+│  ║  └────────────────────────────────────────────────────────┘  ║ │
+│  ║                                                              ║ │
+│  ║  ┌────────────────────────────────────────────────────────┐  ║ │
+│  ║  │ [🧠 SOLVE] [claude]                    5 minutes ago   │  ║ │
+│  ║  │                                                        │  ║ │
+│  ║  │ What is the derivative of f(x) = x² + 3x - 5?        │  ║ │
+│  ║  │                                                        │  ║ │
+│  ║  │ ┌────────────────────────────────────────────────────┐│  ║ │
+│  ║  │ │ To find the derivative, we apply the power rule:  ││  ║ │
+│  ║  │ │ f'(x) = 2x + 3                                    ││  ║ │
+│  ║  │ │ Let me explain step by step...                    ││  ║ │
+│  ║  │ └────────────────────────────────────────────────────┘│  ║ │
+│  ║  │                                                        │  ║ │
+│  ║  │  [📋 Copy]    [👁️ View]    [🗑️ Delete]              │  ║ │
+│  ║  └────────────────────────────────────────────────────────┘  ║ │
+│  ║                                                              ║ │
+│  ║  ┌────────────────────────────────────────────────────────┐  ║ │
+│  ║  │ [💡 EXPLAIN] [gemini]                  1 hour ago      │  ║ │
+│  ║  │                                                        │  ║ │
+│  ║  │ Screen capture (1200x800)                             │  ║ │
+│  ║  │                                                        │  ║ │
+│  ║  │ ┌────────────────────────────────────────────────────┐│  ║ │
+│  ║  │ │ This diagram shows a neural network architecture  ││  ║ │
+│  ║  │ │ with three layers: input, hidden, and output...   ││  ║ │
+│  ║  │ └────────────────────────────────────────────────────┘│  ║ │
+│  ║  │                                                        │  ║ │
+│  ║  │  [📋 Copy]    [👁️ View]    [🗑️ Delete]              │  ║ │
+│  ║  └────────────────────────────────────────────────────────┘  ║ │
+│  ║                                                              ║ │
+│  ║  ... (scrollable to see more entries)                       ║ │
+│  ╚══════════════════════════════════════════════════════════════╝ │
+│                                                                    │
+│  ┌──────────────────────────────────────────────────────────────┐ │
+│  │                  🔑 API Configuration                        │ │
+│  ├──────────────────────────────────────────────────────────────┤ │
+│  │  Platform: [OpenAI (GPT-4o) ▼]                              │ │
+│  │  API Key:  [••••••••••••••••••]                             │ │
+│  │            [💾 Save API Key]                                 │ │
+│  └──────────────────────────────────────────────────────────────┘ │
+│                                                                    │
+└────────────────────────────────────────────────────────────────────┘
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃                         COLOR CODING                                 ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+MODE BADGES:
+  🤖 AUTO      → Green background   (#e8f5e9, #388e3c)
+  ✍️ GRAMMAR   → Orange background  (#fff3e0, #f57c00)
+  🧠 SOLVE     → Pink background    (#fce4ec, #c2185b)
+  📝 SUMMARIZE → Teal background    (#e0f2f1, #00796b)
+  💡 EXPLAIN   → Yellow background  (#fff9c4, #f57f17)
+
+PLATFORM BADGES:
+  openai      → Green badge   (#d4edda, #155724)
+  claude      → Yellow badge  (#fff3cd, #856404)
+  gemini      → Blue badge    (#d1ecf1, #0c5460)
+  openrouter  → Purple badge  (#e2d9f3, #5a2a82)
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃                      INTERACTIVE FEATURES                            ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+HOVER EFFECTS:
+  ┌────────────────────────┐       ┌────────────────────────┐
+  │  History Card          │  →    │  History Card          │
+  │  (normal state)        │       │  (hover: purple glow)  │
+  │  border: #e0e0e0       │       │  border: #667eea       │
+  └────────────────────────┘       │  shadow: purple        │
+                                    │  slight lift up        │
+                                    └────────────────────────┘
+
+ACTION BUTTONS:
+  [📋 Copy]   → Hover: Blue background   (#e3f2fd)
+  [👁️ View]   → Hover: Green background  (#e8f5e9)
+  [🗑️ Delete] → Hover: Red background    (#ffebee)
+
+SCROLLBAR:
+  Track:  Light gray (#f0f0f0)
+  Thumb:  Purple (#667eea)
+  Hover:  Dark purple (#5568d3)
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃                        EMPTY STATE                                   ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+When no history exists yet:
+
+  ╔══════════════════════════════════════════════════════════════╗
+  ║  📜 Analysis History                        🗑️ Clear         ║
+  ╠══════════════════════════════════════════════════════════════╣
+  ║                                                              ║
+  ║                   No analysis history yet                    ║
+  ║                                                              ║
+  ║         (Perform an analysis to see it tracked here)        ║
+  ║                                                              ║
+  ╚══════════════════════════════════════════════════════════════╝
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃                     TIME STAMP EXAMPLES                              ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+  just now
+  1 minute ago
+  5 minutes ago
+  1 hour ago
+  3 hours ago
+  1 day ago
+  2 days ago
+  1 week ago
+  2 weeks ago
+  1 month ago
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃                     BUTTON ACTIONS                                   ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+📋 COPY BUTTON:
+  • Copies full AI response to clipboard
+  • Shows "✅ Copied to clipboard!" status message
+  • Works with Ctrl+V to paste anywhere
+
+👁️ VIEW BUTTON:
+  • Opens full response in page overlay
+  • Closes popup automatically
+  • Shows complete, untruncated result
+  • Has X button to close overlay
+
+🗑️ DELETE BUTTON (on entry):
+  • Removes that specific entry
+  • Shows "🗑️ Item deleted" status
+  • History list updates immediately
+  • Other entries remain intact
+
+🗑️ CLEAR BUTTON (in header):
+  • Asks for confirmation: "Are you sure?"
+  • If confirmed: Removes ALL history
+  • Shows "🗑️ History cleared" status
+  • Cannot be undone!
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃                    STORAGE INFORMATION                               ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+STORED DATA PER ENTRY:
+  {
+    timestamp: "2024-11-16T10:30:00.000Z",
+    type: "text" | "image",
+    input: "User's question/prompt",
+    result: "AI's full response",
+    mode: "auto|grammar|solve|summarize|explain",
+    platform: "openai|claude|gemini|openrouter"
+  }
+
+STORAGE LIMITS:
+  • Maximum stored: 100 entries
+  • Maximum displayed: 20 entries
+  • Auto cleanup: Yes (keeps newest 100)
+  • Storage type: Chrome local storage
+  • Sync: No (local only)
+  • Size: ~2-5 MB typical
+
+PRIVACY:
+  • ✅ Stored locally only
+  • ✅ Never sent to external servers
+  • ✅ User can delete anytime
+  • ✅ No tracking or analytics
+  • ✅ Automatic cleanup
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃                         TIPS & TRICKS                                ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+💡 QUICK TIPS:
+
+1. RECENT FIRST
+   → History is sorted newest to oldest automatically
+
+2. PREVIEW vs FULL
+   → Popup shows preview (200 chars)
+   → Click "View" for complete response
+
+3. COPY SHORTCUT
+   → Copy button for quick clipboard access
+   → Faster than manually selecting text
+
+4. COLOR CODING
+   → Quickly identify analysis type by color
+   → Platform badge shows which API was used
+
+5. STORAGE MANAGEMENT
+   → Automatic cleanup keeps last 100
+   → No manual maintenance needed
+
+6. SEARCH TIP
+   → Use browser's search (Ctrl+F) in overlay
+   → Or copy to notes app for advanced search
+
+7. BACKUP
+   → No built-in export yet
+   → Can manually copy important results
+
+8. TESTING
+   → Perform a few analyses to populate history
+   → Try different modes to see color variety
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃                      KEYBOARD SHORTCUTS                              ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+None currently implemented, but could add:
+  • Ctrl+H - Toggle history section
+  • Ctrl+C - Copy selected entry
+  • Ctrl+V - View selected entry
+  • Ctrl+D - Delete selected entry
+  • Ctrl+Shift+K - Clear all history
+
+(These are future enhancement ideas)
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃                         END OF GUIDE                                 ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+✨ The history feature is ready to use!
+🎉 Reload your extension and start tracking your AI analyses!
+📚 See TEST_HISTORY_FEATURE.md for detailed testing guide

@@ -9,7 +9,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.action === "startCapture") {
     startScreenCapture(request.mode);
   } else if (request.action === "analyzeText") {
-    analyzeSelectedText(request.mode);
+    analyzeSelectedText(request.mode, request.text);
   } else if (request.action === "showResult") {
     showResultOverlay(request.result);
   } else if (request.action === "showNotification") {
@@ -151,8 +151,13 @@ async function captureArea(x, y, width, height) {
 }
 
 // Analyze selected text
-async function analyzeSelectedText(mode) {
-  const selectedText = window.getSelection().toString().trim();
+async function analyzeSelectedText(mode, providedText) {
+  // Use provided text (from popup) or get current selection
+  let selectedText = providedText;
+
+  if (!selectedText) {
+    selectedText = window.getSelection().toString().trim();
+  }
 
   if (!selectedText) {
     showNotification("⚠️ No text selected", "error");

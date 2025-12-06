@@ -39,6 +39,7 @@ SmartLens AI is an intelligent Chrome extension that analyzes text, images, audi
 - Context menu integration
 - Beautiful, modern UI
 - Real-time notifications
+- **📜 Analysis History** - Track all analyses with copy/view/delete actions
 
 ## 🚀 Installation
 
@@ -87,6 +88,37 @@ SmartLens AI is an intelligent Chrome extension that analyzes text, images, audi
 1. Select text on any webpage
 2. Right-click
 3. Choose "🔍 Analyze with SmartLens AI"
+
+## 📜 Analysis History
+
+SmartLens AI automatically tracks all your analyses:
+
+### Features
+
+- **📋 Automatic Tracking**: Every analysis is saved with input, result, mode, and platform
+- **🔍 Quick Review**: Scroll through your last 20 analyses in the popup
+- **📋 Copy Results**: One-click copy to clipboard
+- **👁️ View Full Response**: Open complete results in overlay
+- **🗑️ Delete Entries**: Remove individual items or clear all history
+- **🎨 Color-Coded**: Visual organization by mode and platform
+- **⏰ Time Stamps**: See when each analysis was performed
+
+### Usage
+
+1. **View History**: Open the extension popup - history shown at top
+2. **Copy Result**: Click the "📋 Copy" button on any entry
+3. **View Full**: Click the "👁️ View" button to see complete response
+4. **Delete**: Click "🗑️ Delete" to remove specific entry
+5. **Clear All**: Click "🗑️ Clear" in header to remove all history
+
+### Storage
+
+- Keeps last **100 entries** automatically
+- Shows **20 most recent** in popup
+- Stored **locally** in Chrome (never synced)
+- **User controlled** - delete anytime
+
+**See [HISTORY_FEATURE.md](./HISTORY_FEATURE.md) for complete documentation.**
 
 ## 🔧 Configuration
 
@@ -245,6 +277,10 @@ Edit the `SYSTEM_PROMPT` in `background.js` to adjust AI behavior.
 
 - Solution: Add your API key in the extension popup settings
 
+**Issue**: "No text selected" error
+
+- Solution: ✅ **FIXED!** Make sure to reload the extension. Select text, then click the "Analyze Selected Text" button. See [TEXT_SELECTION_FIX.md](./TEXT_SELECTION_FIX.md) for details.
+
 **Issue**: Capture overlay doesn't show
 
 - Solution: Refresh the webpage and try again
@@ -252,6 +288,10 @@ Edit the `SYSTEM_PROMPT` in `background.js` to adjust AI behavior.
 **Issue**: AI responses are generic
 
 - Solution: Ensure you've integrated a real AI API in `background.js`
+
+**Issue**: Text selection not working after update
+
+- Solution: Reload the extension at `chrome://extensions/` and refresh all open tabs
 
 ## 🚧 Development Roadmap
 

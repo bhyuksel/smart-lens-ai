@@ -63,7 +63,14 @@ Welcome! This is your guide to all the documentation for SmartLens AI.
    - Platform-specific fixes
    - Error message reference
 
-8. **[MODEL_UPDATE.md](./MODEL_UPDATE.md)**
+8. **[TEXT_SELECTION_FIX.md](./TEXT_SELECTION_FIX.md)** ✨ NEW!
+
+   - Fixed "No text selected" error
+   - Technical explanation
+   - How the fix works
+   - Testing instructions
+
+9. **[MODEL_UPDATE.md](./MODEL_UPDATE.md)**
    - OpenAI model deprecation fixes
    - Updated model names
    - Migration guide
